@@ -1,6 +1,6 @@
 # Content Manager Java
 
-Lightweight Java 11 data-processing library: parser, transformer, and REST API with JUnit5 tests and GitHub Actions CI
+Lightweight Java Spring Boot application: content parser, transformer, and REST API with JUnit5 tests and CI/CD ready
 
 ## Overview
 
