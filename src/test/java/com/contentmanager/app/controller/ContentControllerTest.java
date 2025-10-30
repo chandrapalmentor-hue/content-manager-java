@@ -139,6 +139,7 @@ class ContentControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("test data"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("TEST DATA"));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().string("\"TEST DATA\""));
     }
 }

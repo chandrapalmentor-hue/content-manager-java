@@ -4,6 +4,7 @@ import com.contentmanager.app.model.Content;
 import com.contentmanager.app.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -91,11 +92,13 @@ public class ContentController {
      * Parse and transform data.
      *
      * @param data Raw data to parse
-     * @return Transformed data
+     * @return Transformed data with proper content type
      */
-    @PostMapping("/parse")
+    @PostMapping(value = "/parse", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> parseData(@RequestBody String data) {
         String transformed = contentService.parseAndTransform(data);
-        return ResponseEntity.ok(transformed);
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("\"" + transformed.replace("\"", "\\\"") + "\"");
     }
 }
